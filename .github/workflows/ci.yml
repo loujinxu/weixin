@@ -22,16 +22,11 @@ jobs:
       - name: Install deps
         run: npm install
 
-      # 将私钥写入文件（私钥内容放在 GitHub Secrets 的 MP_PRIVATE_KEY 中）
-      - name: Setup private key
-        run: |
-          echo "${{ secrets.MP_PRIVATE_KEY }}" > private.key
-          chmod 600 private.key
-
+      # 通过环境变量传入私钥，避免 echo 写文件时换行被破坏
       - name: Upload to WeChat (experience version)
         env:
           MP_APPID: ${{ secrets.MP_APPID }}
-          MP_PRIVATE_KEY_PATH: ${{ github.workspace }}/private.key
+          MP_PRIVATE_KEY: ${{ secrets.MP_PRIVATE_KEY }}
           MP_VERSION: ${{ github.run_number }}
           MP_DESC: "CI build #${{ github.run_number }}"
         run: npm run upload:ci
