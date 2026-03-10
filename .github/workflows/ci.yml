@@ -22,11 +22,18 @@ jobs:
       - name: Install deps
         run: npm install
 
-      # 通过环境变量传入私钥，避免 echo 写文件时换行被破坏
+      # 用 Node 把私钥写入文件，保留换行（与本地 private.key 方式一致）
+      - name: Setup private key
+        env:
+          MP_PRIVATE_KEY: ${{ secrets.MP_PRIVATE_KEY }}
+        run: |
+          node -e "require('fs').writeFileSync(process.env.GITHUB_WORKSPACE + '/private.key', process.env.MP_PRIVATE_KEY || '', 'utf8');"
+          chmod 600 private.key
+
       - name: Upload to WeChat (experience version)
         env:
           MP_APPID: ${{ secrets.MP_APPID }}
-          MP_PRIVATE_KEY: ${{ secrets.MP_PRIVATE_KEY }}
+          MP_PRIVATE_KEY_PATH: ${{ github.workspace }}/private.key
           MP_VERSION: ${{ github.run_number }}
           MP_DESC: "CI build #${{ github.run_number }}"
         run: npm run upload:ci
