@@ -6,6 +6,6 @@
     "upload:ci": "node scripts/upload-ci.js"
   },
   "devDependencies": {
-    "miniprogram-ci": "^2.1.0"
+    "miniprogram-ci": "1.9.17"
   }
 }
