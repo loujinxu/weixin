@@ -1,0 +1,32 @@
+<!--pages/leave/leave.wxml-->
+<view class="container">
+  <view class="card" wx:if="{{!hasActive}}">
+    <view class="card-title">申请暂离</view>
+    <view class="card-desc">您当前没有进行中的座位预约，请先预约座位后再申请暂离。</view>
+    <view class="btn-primary" style="margin-top:24rpx" bindtap="goBack">返回首页</view>
+  </view>
+
+  <block wx:if="{{hasActive}}">
+    <view class="card">
+      <view class="card-title">当前预约</view>
+      <view class="info-row">座位：{{reservation.seatId}}</view>
+      <view class="info-row">状态：{{reservation.statusText}}</view>
+      <view class="info-row">结束时间：{{reservation.endAtText}}</view>
+      <view class="info-row" wx:if="{{reservation.leaveUntilText}}">暂离截止：{{reservation.leaveUntilText}}</view>
+    </view>
+
+    <view class="card" wx:if="{{!reservation.isLeave}}">
+      <view class="card-title">申请暂离时长</view>
+      <picker mode="selector" range="{{leaveOptions}}" range-key="label" value="{{leaveIndex}}" bindchange="onLeaveDurationChange">
+        <view class="picker">{{leaveOptions[leaveIndex].label}}</view>
+      </picker>
+      <view class="btn-primary" style="margin-top:24rpx" bindtap="applyLeave">申请暂离</view>
+    </view>
+
+    <view class="card" wx:if="{{reservation.isLeave}}">
+      <view class="card-title">您正在暂离中</view>
+      <view class="card-desc">请在暂离截止时间前返回并点击下方按钮，否则座位将被释放。</view>
+      <view class="btn-primary" style="margin-top:24rpx" bindtap="backFromLeave">返回座位</view>
+    </view>
+  </block>
+</view>

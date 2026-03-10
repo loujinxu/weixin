@@ -1,0 +1,118 @@
+<!-- pages/history/history.wxml -->
+<view class="container">
+  <!-- 统计信息 -->
+  <view class="stats-section">
+    <view class="stats-item">
+      <view class="stats-value">{{totalReservations}}</view>
+      <view class="stats-label">总预约数</view>
+    </view>
+    <view class="stats-item">
+      <view class="stats-value">{{todayReservations}}</view>
+      <view class="stats-label">今日预约</view>
+    </view>
+    <view class="stats-item">
+      <view class="stats-value">{{monthReservations}}</view>
+      <view class="stats-label">本月预约</view>
+    </view>
+  </view>
+  
+  <!-- 列表视图 -->
+  <view class="list-view" wx:if="{{currentView === 'list'}}">
+    <!-- 筛选选项 -->
+    <view class="filter-section">
+      <view class="filter-title">筛选条件：</view>
+      <view class="filter-options">
+        <view 
+          class="filter-option {{currentFilter === 'all' ? 'active' : ''}}" 
+          data-filter="all"
+          bindtap="filterReservations"
+        >
+          全部
+        </view>
+        <view 
+          class="filter-option {{currentFilter === 'today' ? 'active' : ''}}" 
+          data-filter="today"
+          bindtap="filterReservations"
+        >
+          今天
+        </view>
+        <view 
+          class="filter-option {{currentFilter === 'thisMonth' ? 'active' : ''}}" 
+          data-filter="thisMonth"
+          bindtap="filterReservations"
+        >
+          本月
+        </view>
+        <view 
+          class="filter-option {{currentFilter === 'completed' ? 'active' : ''}}" 
+          data-filter="completed"
+          bindtap="filterReservations"
+        >
+          已完成
+        </view>
+        <view 
+          class="filter-option {{currentFilter === 'cancelled' ? 'active' : ''}}" 
+          data-filter="cancelled"
+          bindtap="filterReservations"
+        >
+          已取消
+        </view>
+      </view>
+    </view>
+    
+    <!-- 列表内容 -->
+    <scroll-view class="history-list" scroll-y>
+      <view class="empty-state" wx:if="{{filteredHistory.length === 0}}">
+        <view class="empty-icon">📊</view>
+        <view class="empty-text">暂无预约记录</view>
+        <view class="empty-subtext">快去预约座位学习吧～</view>
+      </view>
+      
+      <view class="history-items" wx:else>
+        <view 
+          class="history-item {{getStatusClass(item.status)}}" 
+          wx:for="{{filteredHistory}}" 
+          wx:key="id"
+        >
+          <view class="item-header">
+            <view class="item-date">{{item.dateString}}</view>
+            <view class="item-status {{getStatusClass(item.status)}}">{{item.status}}</view>
+          </view>
+          
+          <view class="item-content">
+            <view class="info-row">
+              <view class="info-label">预约座位：</view>
+              <view class="info-value">{{item.seat}}号</view>
+            </view>
+            
+            <view class="info-row">
+              <view class="info-label">预约时长：</view>
+              <view class="info-value">{{item.hours}}小时</view>
+            </view>
+            
+            <view class="info-row" wx:if="{{item.endTime}}">
+              <view class="info-label">结束时间：</view>
+              <view class="info-value">{{formatDateTime(item.endTime)}}</view>
+            </view>
+            
+            <view class="info-row" wx:if="{{item.status === '已退坐' || item.status === '暂离超时' || item.status === '已过期'}}">
+              <view class="info-label">状态说明：</view>
+              <view class="info-value">{{getStatusDescription(item.status)}}</view>
+            </view>
+          </view>
+          
+          <view class="item-footer">
+            <view class="item-id">记录ID: {{item.id.substring(0, 8)}}...</view>
+            <view class="duration-tag">{{item.hours}}小时</view>
+          </view>
+        </view>
+      </view>
+      
+      <!-- 加载更多提示 -->
+      <view class="load-more" wx:if="{{filteredHistory.length > 0}}">
+        <view class="load-text">已显示全部记录</view>
+        <view class="load-icon">🎉</view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

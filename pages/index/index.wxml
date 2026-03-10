@@ -1,0 +1,62 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- 预约状态 -->
+  <view class="status-section">
+    <view class="status-item">
+      <view class="status-icon">📅</view>
+      <view class="status-content">
+        <view class="status-title">今日已预约</view>
+        <view class="status-value">{{todayReservationCount}}/3 次</view>
+      </view>
+    </view>
+    <view class="status-item" wx:if="{{!canReserve}}">
+      <view class="status-icon warning">⏰</view>
+      <view class="status-content">
+        <view class="status-title">预约限制</view>
+        <view class="status-value">{{lockMessage}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 功能菜单：座位预约、关于本馆、预约记录、问题反馈 -->
+  <view class="menu-container">
+    <view class="menu-grid">
+      <view class="menu-item" bindtap="navigateToSeatSelect">
+        <text class="menu-icon menu-icon-emoji">🪑</text>
+        <text class="menu-text">座位预约</text>
+      </view>
+      <view class="menu-item" bindtap="navigateToAbout">
+        <text class="menu-icon menu-icon-emoji">📖</text>
+        <text class="menu-text">关于本馆</text>
+      </view>
+      <view class="menu-item" bindtap="navigateToHistory">
+        <text class="menu-icon menu-icon-emoji">📋</text>
+        <text class="menu-text">预约记录</text>
+      </view>
+      <view class="menu-item menu-item-feedback" bindtap="navigateToFeedback">
+        <text class="menu-icon menu-icon-emoji">💬</text>
+        <text class="menu-text">问题反馈</text>
+      </view>
+    </view>
+
+    <!-- 查看已预约座位 -->
+    <view
+      class="reservation-status {{hasReservation ? 'active' : 'disabled'}}"
+      bindtap="navigateToReservationStatus"
+    >
+      <view class="status-content">
+        <view class="status-icon">📍</view>
+        <view class="status-text">
+          <text class="status-title">查看已预约座位</text>
+          <text class="status-subtitle" wx:if="{{hasReservation}}">
+            当前预约座位：{{reservationSeatLabel}}
+            <text class="status-time" wx:if="{{reservationHours > 0}}">({{reservationHours}}小时)</text>
+            <text class="status-temp" wx:if="{{isTempLeave}}">[暂离中]</text>
+          </text>
+          <text class="status-subtitle" wx:else>当前无预约座位</text>
+        </view>
+        <view class="status-arrow" wx:if="{{hasReservation}}">›</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,21 @@
+<!--pages/timeslot/timeslot.wxml-->
+<view class="container">
+  <view class="card">
+    <view class="card-title">座位 {{seatId}} · 选择预约时长</view>
+    <view class="slot-list">
+      <view
+        class="slot-item {{selectedIndex === index ? 'selected' : ''}}"
+        wx:for="{{slots}}"
+        wx:key="value"
+        data-index="{{index}}"
+        bindtap="onSelectSlot"
+      >
+        {{item.label}}
+      </view>
+    </view>
+  </view>
+  <view class="btn-row">
+    <view class="btn-secondary" bindtap="cancel">取消</view>
+    <view class="btn-primary" bindtap="confirm">确认</view>
+  </view>
+</view>

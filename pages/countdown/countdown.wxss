@@ -1,0 +1,95 @@
+/* pages/countdown/countdown.wxss */
+.countdown-card {
+  background: linear-gradient(135deg, #1a5fb4 0%, #3584e4 100%);
+  border-radius: 24rpx;
+  padding: 60rpx;
+  text-align: center;
+  margin-bottom: 48rpx;
+}
+.countdown-label {
+  font-size: 28rpx;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 16rpx;
+}
+.countdown-value {
+  font-size: 72rpx;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 4rpx;
+}
+.btn-row {
+  display: flex;
+  gap: 24rpx;
+  margin-bottom: 48rpx;
+}
+.btn-warning {
+  flex: 1;
+  padding: 24rpx;
+  text-align: center;
+  background: #e57373;
+  color: #fff;
+  border-radius: 12rpx;
+  font-size: 32rpx;
+}
+.btn-primary {
+  flex: 1;
+}
+.notice {
+  padding: 24rpx;
+  background: #fff8e1;
+  border-radius: 12rpx;
+  border-left: 6rpx solid #ffa726;
+}
+.notice-line {
+  display: block;
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 8rpx;
+}
+.notice-line:last-child {
+  margin-bottom: 0;
+}
+
+.modal-mask {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modal-box {
+  width: 560rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 48rpx;
+}
+.modal-title {
+  font-size: 34rpx;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 40rpx;
+  color: #333;
+}
+.modal-btns {
+  display: flex;
+  gap: 24rpx;
+}
+.modal-btn {
+  flex: 1;
+  padding: 24rpx;
+  text-align: center;
+  background: #e0e0e0;
+  color: #333;
+  border-radius: 12rpx;
+  font-size: 30rpx;
+}
+.modal-btn.primary {
+  background: #1a5fb4;
+  color: #fff;
+}

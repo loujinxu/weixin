@@ -1,0 +1,39 @@
+<view class="container">
+  <view class="noauth" wx:if="{{!isAdmin}}">
+    <text class="noauth-title">无权限</text>
+    <text class="noauth-sub">仅管理员可查看与处理用户反馈</text>
+  </view>
+
+  <view wx:else>
+    <view class="tabs">
+      <view class="tab {{filter==='pending'?'active':''}}" data-filter="pending" bindtap="setFilter">待处理</view>
+      <view class="tab {{filter==='done'?'active':''}}" data-filter="done" bindtap="setFilter">已完成</view>
+      <view class="tab {{filter==='all'?'active':''}}" data-filter="all" bindtap="setFilter">全部</view>
+    </view>
+
+    <view class="list" wx:if="{{list.length}}">
+      <view class="card" wx:for="{{list}}" wx:key="_id">
+        <view class="row">
+          <text class="type">{{item.type}}</text>
+          <view class="status {{item.status === 'done' ? 'done' : 'pending'}}">
+            <text>{{item.statusText}}</text>
+          </view>
+        </view>
+        <text class="content">{{item.content}}</text>
+        <text class="meta" wx:if="{{item.location}}">位置：{{item.location}}</text>
+        <text class="meta">用户：{{item.openid}}</text>
+        <text class="meta">提交：{{item.timeText}}</text>
+        <view class="actions">
+          <button class="btn small" data-id="{{item._id}}" data-status="pending" bindtap="updateStatus" disabled="{{item.status==='pending'}}">标为待处理</button>
+          <button class="btn small primary" data-id="{{item._id}}" data-status="done" bindtap="updateStatus" disabled="{{item.status==='done'}}">标为已完成</button>
+        </view>
+      </view>
+    </view>
+
+    <view class="empty" wx:else>
+      <text class="empty-title">暂无反馈</text>
+      <text class="empty-sub">换个筛选条件试试</text>
+    </view>
+  </view>
+</view>
+

@@ -1,0 +1,89 @@
+<!-- pages/timeSelect/timeSelect.wxml -->
+<view class="container">
+  <!-- 座位信息 -->
+  <view class="seat-info">
+    <view class="info-content">
+      <text class="info-label">您选择的座位：</text>
+      <text class="seat-number">{{seatLabel || (seatNumber + '号')}}</text>
+    </view>
+  </view>
+  
+  <!-- 时间选择区域 -->
+  <view class="time-section">
+    <view class="section-title">请选择预约时长（必须选择一个）</view>
+    
+    <view class="time-slots">
+      <view 
+        class="time-slot {{selectedTime === 1 ? 'active' : ''}}" 
+        data-time="1"
+        bindtap="selectTime"
+      >
+        <text class="time-text">1小时</text>
+        <text class="time-subtext">暂离次数：1次</text>
+      </view>
+      
+      <view 
+        class="time-slot {{selectedTime === 2 ? 'active' : ''}}" 
+        data-time="2"
+        bindtap="selectTime"
+      >
+        <text class="time-text">2小时</text>
+        <text class="time-subtext">暂离次数：1次</text>
+      </view>
+      
+      <view 
+        class="time-slot {{selectedTime === 3 ? 'active' : ''}}" 
+        data-time="3"
+        bindtap="selectTime"
+      >
+        <text class="time-text">3小时</text>
+        <text class="time-subtext">暂离次数：2次</text>
+      </view>
+      
+      <view 
+        class="time-slot {{selectedTime === 4 ? 'active' : ''}}" 
+        data-time="4"
+        bindtap="selectTime"
+      >
+        <text class="time-text">4小时</text>
+        <text class="time-subtext">暂离次数：2次</text>
+      </view>
+      
+      <view 
+        class="time-slot {{selectedTime === 5 ? 'active' : ''}}" 
+        data-time="5"
+        bindtap="selectTime"
+      >
+        <text class="time-text">5小时</text>
+        <text class="time-subtext">暂离次数：4次</text>
+      </view>
+      
+      <view 
+        class="time-slot {{selectedTime === 6 ? 'active' : ''}}" 
+        data-time="6"
+        bindtap="selectTime"
+      >
+        <text class="time-text">6小时</text>
+        <text class="time-subtext">暂离次数：4次</text>
+      </view>
+    </view>
+    
+    <!-- 已选时间提示 -->
+    <view class="selected-info" wx:if="{{selectedTime > 0}}">
+      <text class="selected-text">已选择：{{selectedTime}}小时</text>
+      <text class="temp-info">可暂离次数：{{getTempLeaveCount(selectedTime)}}次</text>
+    </view>
+  </view>
+  
+  <!-- 操作按钮 -->
+  <view class="action-buttons">
+    <button class="btn cancel" bindtap="cancelSelection">取消</button>
+    <button 
+      class="btn confirm" 
+      bindtap="confirmSelection"
+      disabled="{{!selectedTime}}"
+    >
+      确认预约
+    </button>
+  </view>
+</view>

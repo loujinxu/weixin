@@ -1,0 +1,11 @@
+{
+  "name": "library-seat-miniprogram",
+  "version": "1.0.0",
+  "description": "图书馆座位预约小程序",
+  "scripts": {
+    "upload:ci": "node scripts/upload-ci.js"
+  },
+  "devDependencies": {
+    "miniprogram-ci": "^1.10.0"
+  }
+}

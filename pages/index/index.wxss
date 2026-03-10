@@ -1,0 +1,244 @@
+/* index.wxss */
+/* 全局样式 */
+.container {
+  min-height: 100vh;
+  background-color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+/* 顶部标题 */
+.header {
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #2c3e50, #4a6491);
+  color: white;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+  padding: 0 20rpx;
+}
+
+.header-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  letter-spacing: 1.5rpx;
+  text-shadow: 0 1rpx 2rpx rgba(0, 0, 0, 0.2);
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* 功能菜单容器 */
+.menu-container {
+  padding: 30rpx 20rpx;
+  background-color: #ffffff;
+}
+
+/* 菜单网格：2x2 布局 */
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24rpx;
+  margin-bottom: 30rpx;
+  padding: 0 20rpx;
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 160rpx;
+  padding: 24rpx 16rpx;
+  background: linear-gradient(135deg, #f8f9fa, #ffffff);
+  border-radius: 20rpx;
+  border: 2rpx solid #f0f0f0;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-item-feedback {
+  background: linear-gradient(135deg, #fff8f0, #ffffff);
+  border-color: #ffe0c2;
+}
+
+.menu-item-feedback:active {
+  border-color: #e67e22;
+  box-shadow: 0 6rpx 20rpx rgba(230, 126, 34, 0.2);
+}
+
+.menu-icon-emoji {
+  font-size: 72rpx;
+  margin-bottom: 16rpx;
+  line-height: 1;
+}
+
+.menu-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(41, 128, 185, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.menu-item:active {
+  transform: translateY(-2rpx) scale(0.98);
+  border-color: #3498db;
+  box-shadow: 0 6rpx 20rpx rgba(52, 152, 219, 0.2);
+}
+
+.menu-item:active::before {
+  opacity: 1;
+}
+
+.menu-item:active .menu-icon {
+  transform: scale(1.1);
+}
+
+.menu-item:active .menu-text {
+  color: #3498db;
+  transform: translateY(1rpx);
+}
+
+.menu-item image.menu-icon {
+  width: 80rpx;
+  height: 80rpx;
+  margin-bottom: 16rpx;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 2rpx 4rpx rgba(0, 0, 0, 0.1));
+}
+
+.menu-text {
+  font-size: 28rpx;
+  color: #2c3e50;
+  font-weight: 600;
+  letter-spacing: 0.5rpx;
+  transition: all 0.3s ease;
+  text-shadow: 0 1rpx 2rpx rgba(0, 0, 0, 0.05);
+}
+
+/* 预约状态 */
+.reservation-status {
+  background: linear-gradient(135deg, #f8f9fa, #ffffff);
+  border-radius: 20rpx;
+  padding: 30rpx 25rpx;
+  border: 2rpx solid #f0f0f0;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.reservation-status.active {
+  background: linear-gradient(135deg, #e8f4ff, #ffffff);
+  border-color: #3498db;
+  animation: pulse 2s infinite;
+}
+
+.reservation-status.disabled {
+  background: linear-gradient(135deg, #f5f5f5, #ffffff);
+  border-color: #e0e0e0;
+  cursor: default;
+}
+
+.reservation-status.active:active {
+  transform: translateY(-1rpx) scale(0.995);
+  box-shadow: 0 6rpx 20rpx rgba(52, 152, 219, 0.3);
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 4rpx 12rpx rgba(52, 152, 219, 0.2); }
+  50% { box-shadow: 0 4rpx 20rpx rgba(52, 152, 219, 0.4); }
+  100% { box-shadow: 0 4rpx 12rpx rgba(52, 152, 219, 0.2); }
+}
+
+.status-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.status-icon {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40rpx;
+  color: #3498db;
+  background-color: #e8f4ff;
+  border-radius: 15rpx;
+  flex-shrink: 0;
+  margin-right: 20rpx;
+  box-shadow: 0 2rpx 6rpx rgba(52, 152, 219, 0.2);
+}
+
+.status-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.status-title {
+  font-size: 30rpx;
+  color: #2c3e50;
+  font-weight: bold;
+  margin-bottom: 8rpx;
+  letter-spacing: 0.5rpx;
+  text-shadow: 0 1rpx 2rpx rgba(0, 0, 0, 0.05);
+}
+
+.status-subtitle {
+  font-size: 24rpx;
+  color: #666666;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.status-time {
+  color: #27ae60;
+  font-weight: 600;
+  margin-left: 5rpx;
+}
+
+.status-temp {
+  color: #e67e22;
+  font-weight: 600;
+  margin-left: 8rpx;
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.status-arrow {
+  font-size: 40rpx;
+  color: #3498db;
+  font-weight: bold;
+  width: 40rpx;
+  height: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10rpx;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+  transform: translateX(0);
+}
+
+.reservation-status.active:active .status-arrow {
+  transform: translateX(5rpx);
+  opacity: 1;
+}

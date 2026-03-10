@@ -1,0 +1,62 @@
+<!-- map.wxml -->
+<view class="container">
+  <!-- 顶部导航栏 -->
+  <view class="map-header">
+    <view class="back-btn" bindtap="goBack">‹</view>
+    <view class="header-title">俯瞰全馆</view>
+  </view>
+  
+  <!-- 内容区域 -->
+  <scroll-view class="content" scroll-y>
+    <!-- 一楼分布 -->
+    <view class="floor-section">
+      <view class="floor-title">一楼分布</view>
+      <view class="image-row">
+        <!-- 一楼借阅室 -->
+        <view class="image-card" bindtap="previewImage" data-index="0">
+          <image src="/images/floors/reading_room_1.jpg" class="room-image" mode="aspectFill"></image>
+          <view class="room-name">1楼借阅室</view>
+        </view>
+        <!-- 一楼自习室 -->
+        <view class="image-card" bindtap="previewImage" data-index="1">
+          <image src="/images/floors/study_room_1.jpg" class="room-image" mode="aspectFill"></image>
+          <view class="room-name">1楼自习室</view>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 二楼分布 -->
+    <view class="floor-section">
+      <view class="floor-title">二楼分布</view>
+      <view class="image-row">
+        <!-- 二楼借阅室 -->
+        <view class="image-card" bindtap="previewImage" data-index="2">
+          <image src="/images/floors/reading_room_2.jpg" class="room-image" mode="aspectFill"></image>
+          <view class="room-name">2楼借阅室</view>
+        </view>
+        <!-- 二楼自习室 -->
+        <view class="image-card" bindtap="previewImage" data-index="3">
+          <image src="/images/floors/study_room_2.jpg" class="room-image" mode="aspectFill"></image>
+          <view class="room-name">2楼自习室</view>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 三楼分布 -->
+    <view class="floor-section">
+      <view class="floor-title">三楼分布</view>
+      <view class="image-row">
+        <!-- 三楼借阅室 -->
+        <view class="image-card" bindtap="previewImage" data-index="4">
+          <image src="/images/floors/reading_room_3.jpg" class="room-image" mode="aspectFill"></image>
+          <view class="room-name">3楼借阅室</view>
+        </view>
+        <!-- 三楼自习室 -->
+        <view class="image-card" bindtap="previewImage" data-index="5">
+          <image src="/images/floors/study_room_3.jpg" class="room-image" mode="aspectFill"></image>
+          <view class="room-name">3楼自习室</view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

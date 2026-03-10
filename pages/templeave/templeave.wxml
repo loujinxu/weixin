@@ -1,0 +1,15 @@
+<!--pages/templeave/templeave.wxml-->
+<view class="container" wx:if="{{!noLeave}}">
+  <view class="countdown-card">
+    <view class="countdown-label">暂离剩余时间（30分钟）</view>
+    <view class="countdown-value">{{countdownText}}</view>
+  </view>
+  <view class="btn-primary" bindtap="cancelLeave">取消暂离</view>
+</view>
+
+<view class="container" wx:else>
+  <view class="card">
+    <view class="card-desc">当前无暂离中的预约</view>
+    <view class="btn-primary" bindtap="goHome">返回首页</view>
+  </view>
+</view>

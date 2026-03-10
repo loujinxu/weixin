@@ -1,0 +1,67 @@
+/* pages/seat/seat.wxss */
+.floor-tabs {
+  display: flex;
+  gap: 20rpx;
+}
+.floor-tab {
+  flex: 1;
+  text-align: center;
+  padding: 24rpx;
+  background: #f0f0f0;
+  border-radius: 12rpx;
+  font-size: 30rpx;
+}
+.floor-tab.active {
+  background: #1a5fb4;
+  color: #fff;
+}
+
+.seats-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx;
+}
+.seat-item {
+  width: calc(25% - 16rpx);
+  aspect-ratio: 1;
+  border-radius: 12rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+}
+.seat-item.available {
+  background: #e8f5e9;
+  color: #2e7d32;
+  border: 2rpx solid #81c784;
+}
+.seat-item.occupied {
+  background: #ffebee;
+  color: #c62828;
+  border: 2rpx solid #ef9a9a;
+}
+.seat-item.selected {
+  border: 4rpx solid #1a5fb4;
+  background: #e3f2fd;
+  color: #1a5fb4;
+}
+.seat-num {
+  font-weight: 600;
+  margin-bottom: 4rpx;
+}
+.seat-status {
+  font-size: 20rpx;
+  opacity: 0.9;
+}
+
+.picker {
+  padding: 20rpx;
+  background: #f5f5f5;
+  border-radius: 12rpx;
+  font-size: 30rpx;
+}
+
+.btn-primary {
+  margin-top: 40rpx;
+}

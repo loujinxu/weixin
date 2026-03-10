@@ -1,0 +1,19 @@
+<view class="container">
+  <view class="seat-info">
+    <view class="info-content">
+      <text class="info-label">暂离中座位：</text>
+      <view class="seat-display">
+        <text class="seat-number-big">{{seatLabel}}</text>
+        <text class="temp-status">暂离中</text>
+      </view>
+    </view>
+  </view>
+  <view class="countdown-section">
+    <view class="countdown-title">暂离剩余时间</view>
+    <view class="countdown-display"><text class="countdown-text">{{countdownText}}</text></view>
+    <view class="tip-text">请在30分钟内返回，超时将自动结束预约</view>
+  </view>
+  <view class="action-section">
+    <button class="action-btn" bindtap="cancelTempLeave">取消暂离</button>
+  </view>
+</view>

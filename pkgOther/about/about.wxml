@@ -1,0 +1,79 @@
+<!-- pages/about/about.wxml -->
+<view class="container">
+  <view class="header">
+    <view class="back-btn" bindtap="goBack">‹</view>
+    <view class="header-title">关于本馆</view>
+  </view>
+  <scroll-view class="content-scroll" scroll-y>
+    <view class="content-section">
+          <!-- 第1条 -->
+          <view class="rule-item">
+            <view class="rule-number">1.</view>
+            <view class="rule-content">
+              <text class="rule-text">本图书馆自习室24小时开放，图书借阅室开放时间为9：00-17：00，每周一闭馆。</text>
+            </view>
+          </view>
+          
+          <!-- 第2条 -->
+          <view class="rule-item">
+            <view class="rule-number">2.</view>
+            <view class="rule-content">
+              <text class="rule-text">本图书馆共三层，每层各有一个图书借阅室和自习室，自习室每层可同时容纳600人。</text>
+            </view>
+          </view>
+          
+          <!-- 第3条 -->
+          <view class="rule-item">
+            <view class="rule-number">3.</view>
+            <view class="rule-content">
+              <text class="rule-text">本图书馆自习室禁止占座，读者到自习室学习前应先通过本小程序预约座位，每位用户同一时间段只可预约一个座位，已被预约的座位其他用户不可再次预约。</text>
+            </view>
+          </view>
+          
+          <!-- 第4条 -->
+          <view class="rule-item">
+            <view class="rule-number">4.</view>
+            <view class="rule-content">
+              <text class="rule-text">单次座位预约时间最多为6小时，最少为1小时，预约时段若因故需要离开请及时退坐或开启暂离功能。暂离时间为30分钟，若30分钟内取消暂离功能则强制取消当前预约座位需重新预约。预约时间段不大于2小时则有1次暂离机会，预约时间段大于2小时不大于4小时有2次暂离机会，预约时间段大于4小时有4次暂离机会。预约时间结束可重新续约。若未开启暂离且离席时间超过10分钟则本馆工作人员有权收回预约座位。每位读者每天有3次预约机会（续约次数不计入）若当天预约座位次数超过3次将取消当天以及未来一天的座位预约资格。请广大读者妥善安排好预约时间。</text>
+            </view>
+          </view>
+          
+          <!-- 第5条 -->
+          <view class="rule-item">
+            <view class="rule-number">5.</view>
+            <view class="rule-content">
+              <text class="rule-text">请广大读者将贵重物品放入自习室休息室的储物柜中，否则若财产遗失本馆概不负责。</text>
+            </view>
+          </view>
+          
+          <!-- 第6条 -->
+          <view class="rule-item">
+            <view class="rule-number">6.</view>
+            <view class="rule-content">
+              <text class="rule-text">请广大读者在馆内保持安静，勿大声喧哗，保持本馆卫生，勿乱扔垃圾。</text>
+            </view>
+          </view>
+          
+          <!-- 第7条 -->
+          <view class="rule-item">
+            <view class="rule-number">7.</view>
+            <view class="rule-content">
+              <text class="rule-text">本馆服务/投诉电话：</text>
+              <view class="contact-info" bindtap="makePhoneCall">
+                <text class="phone-number">(0416) 291358888</text>
+                <view class="contact-hint">（工作日9:00-17:00）</view>
+              </view>
+            </view>
+          </view>
+          
+          <!-- 温馨提示 -->
+          <view class="tip-box">
+            <view class="tip-icon">💡</view>
+            <view class="tip-content">
+              <text class="tip-title">温馨提示</text>
+              <text class="tip-text">请仔细阅读以上规则，遵守本馆规定，共同营造良好的学习环境。</text>
+            </view>
+          </view>
+        </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,6 @@
+# 小程序 CI 私钥（切勿提交）
+private.key
+
+# 依赖与本地配置
+node_modules/
+project.private.config.json

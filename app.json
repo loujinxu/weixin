@@ -1,0 +1,39 @@
+{
+  "entryPagePath": "pages/index/index",
+  "pages": [
+    "pages/index/index",
+    "pages/about/about",
+    "pages/feedback/feedback",
+    "pages/feedbackRecords/feedbackRecords",
+    "pages/adminFeedback/adminFeedback"
+  ],
+  "subpackages": [
+    {
+      "root": "pkgFlow",
+      "name": "flow",
+      "pages": [
+        "seatSelect/seatSelect",
+        "timeSelect/timeSelect",
+        "reservation/reservation",
+        "temporary/temporary"
+      ]
+    },
+    {
+      "root": "pkgOther",
+      "name": "other",
+      "pages": [
+        "history/history"
+      ]
+    }
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#2c3e50",
+    "navigationBarTitleText": "图书馆自习室座位预约系统",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#ffffff"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

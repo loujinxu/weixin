@@ -1,0 +1,32 @@
+<!--pages/countdown/countdown.wxml-->
+<view class="container" wx:if="{{!noReservation}}">
+  <view class="countdown-card">
+    <view class="countdown-label">预约剩余时间</view>
+    <view class="countdown-value">{{countdownText}}</view>
+  </view>
+  <view class="btn-row">
+    <view class="btn-warning" bindtap="leaveSeat">退坐</view>
+    <view class="btn-primary" bindtap="tempLeave">暂离</view>
+  </view>
+  <view class="notice">
+    <text class="notice-line">请广大读者提前预约座位，严禁占座</text>
+    <text class="notice-line">若因故离开请选择暂离，若离席时间超过十分钟则工作人员有权取消预约资格！</text>
+  </view>
+</view>
+
+<view class="container" wx:else>
+  <view class="card">
+    <view class="card-desc">当前无进行中的预约</view>
+    <view class="btn-primary" bindtap="goHome">返回首页</view>
+  </view>
+</view>
+
+<view class="modal-mask" wx:if="{{showEndModal}}" catchtap="hideEndModal">
+  <view class="modal-box" catchtap="prevent">
+    <view class="modal-title">您的预约时段已结束</view>
+    <view class="modal-btns">
+      <view class="modal-btn" bindtap="reReserve">重新预约</view>
+      <view class="modal-btn primary" bindtap="confirmLeave">确认离开</view>
+    </view>
+  </view>
+</view>

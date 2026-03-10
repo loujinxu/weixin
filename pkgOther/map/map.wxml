@@ -1,0 +1,52 @@
+<!-- map.wxml -->
+<view class="container">
+  <!-- 顶部导航栏 -->
+  <view class="map-header">
+    <view class="back-btn" bindtap="goBack">‹</view>
+    <view class="header-title">俯瞰全馆</view>
+  </view>
+  
+  <!-- 内容区域 -->
+  <scroll-view class="content" scroll-y>
+    <!-- 一楼分布（占位替代大图以减小包体） -->
+    <view class="floor-section">
+      <view class="floor-title">一楼分布</view>
+      <view class="image-row">
+        <view class="image-card image-card-placeholder">
+          <view class="room-placeholder">📚 1楼借阅室</view>
+          <view class="room-name">1楼借阅室</view>
+        </view>
+        <view class="image-card image-card-placeholder">
+          <view class="room-placeholder">💺 1楼自习室</view>
+          <view class="room-name">1楼自习室</view>
+        </view>
+      </view>
+    </view>
+    <view class="floor-section">
+      <view class="floor-title">二楼分布</view>
+      <view class="image-row">
+        <view class="image-card image-card-placeholder">
+          <view class="room-placeholder">📚 2楼借阅室</view>
+          <view class="room-name">2楼借阅室</view>
+        </view>
+        <view class="image-card image-card-placeholder">
+          <view class="room-placeholder">💺 2楼自习室</view>
+          <view class="room-name">2楼自习室</view>
+        </view>
+      </view>
+    </view>
+    <view class="floor-section">
+      <view class="floor-title">三楼分布</view>
+      <view class="image-row">
+        <view class="image-card image-card-placeholder">
+          <view class="room-placeholder">📚 3楼借阅室</view>
+          <view class="room-name">3楼借阅室</view>
+        </view>
+        <view class="image-card image-card-placeholder">
+          <view class="room-placeholder">💺 3楼自习室</view>
+          <view class="room-name">3楼自习室</view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

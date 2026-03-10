@@ -1,0 +1,102 @@
+/* 全局重置样式 */
+page {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  background-color: #f5f5f5;
+  padding: 0;
+  margin: 0;
+}
+
+/* 按钮通用样式 */
+.btn {
+  width: 80%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  background-color: #2c3e50;
+  color: #ffffff;
+  border-radius: 40rpx;
+  margin: 20rpx auto;
+  font-size: 32rpx;
+}
+
+.btn-cancel {
+  background-color: #95a5a6;
+}
+
+/* 容器通用样式 */
+.container {
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+/* 标题通用样式 */
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+  text-align: center;
+  margin: 30rpx 0;
+  color: #2c3e50;
+}
+
+/* 座位选项样式 */
+.seat-item {
+  display: inline-block;
+  width: 120rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  border: 2rpx solid #bdc3c7;
+  border-radius: 10rpx;
+  margin: 10rpx;
+  font-size: 28rpx;
+  color: #34495e;
+}
+
+.seat-item-reserved {
+  background-color: #ecf0f1;
+  color: #95a5a6;
+  border-color: #95a5a6;
+  pointer-events: none;
+}
+
+.seat-item-active {
+  background-color: #3498db;
+  color: #ffffff;
+  border-color: #3498db;
+}
+
+/* 时段（小时）选项样式 */
+.hour-slot {
+  display: inline-block;
+  width: 160rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  border: 2rpx solid #bdc3c7;
+  border-radius: 10rpx;
+  margin: 10rpx;
+  font-size: 26rpx;
+  color: #34495e;
+}
+
+.hour-slot-active {
+  background-color: #2ecc71;
+  color: #ffffff;
+  border-color: #2ecc71;
+}
+
+.hour-slot-disabled {
+  background-color: #ecf0f1;
+  color: #95a5a6;
+  border-color: #95a5a6;
+  pointer-events: none;
+}
+
+/* 计时器通用样式 */
+.timer {
+  text-align: center;
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #e74c3c;
+  margin: 40rpx 0;
+}

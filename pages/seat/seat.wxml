@@ -1,0 +1,49 @@
+<!--pages/seat/seat.wxml-->
+<view class="container" wx:if="{{!isBlacklisted && !violationMsg}}">
+  <view class="card">
+    <view class="card-title">选择楼层</view>
+    <view class="floor-tabs">
+      <view
+        class="floor-tab {{currentFloor === item ? 'active' : ''}}"
+        wx:for="{{floors}}"
+        wx:key="*this"
+        data-floor="{{item}}"
+        bindtap="onFloorChange"
+      >
+        {{item}} 楼
+      </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">选择座位（点击方框进入预约时间选择）</view>
+    <view class="seats-grid">
+      <view
+        class="seat-item {{item.status === 'available' ? 'available' : 'occupied'}}"
+        wx:for="{{seats}}"
+        wx:key="id"
+        data-id="{{item.id}}"
+        bindtap="selectSeat"
+      >
+        <text class="seat-num">{{item.id}}</text>
+        <text class="seat-status">{{item.statusText}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="container" wx:elif="{{violationMsg}}">
+  <view class="card">
+    <view class="card-title">无法预约</view>
+    <view class="card-desc">{{violationMsg}}</view>
+    <view class="btn-primary" style="margin-top:24rpx" bindtap="goBack">返回首页</view>
+  </view>
+</view>
+
+<view class="container" wx:else>
+  <view class="card">
+    <view class="card-title">无法预约</view>
+    <view class="card-desc">您已被加入黑名单，无法进行座位预约。如有疑问请联系管理员。</view>
+    <view class="btn-primary" style="margin-top:24rpx" bindtap="goBack">返回首页</view>
+  </view>
+</view>

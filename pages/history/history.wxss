@@ -1,0 +1,689 @@
+/* pages/history/history.wxss */
+.container {
+  min-height: 100vh;
+  background-color: #f5f7fa;
+  font-family: -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', sans-serif;
+}
+
+/* 顶部导航 */
+.header {
+  display: flex;
+  align-items: center;
+  height: 100rpx;
+  padding: 0 30rpx;
+  background: linear-gradient(135deg, #2c3e50, #4a6491);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.back-btn {
+  font-size: 50rpx;
+  font-weight: bold;
+  width: 60rpx;
+  height: 60rpx;
+  line-height: 50rpx;
+  text-align: center;
+  margin-right: 20rpx;
+  cursor: pointer;
+  opacity: 0.9;
+  transition: all 0.2s;
+}
+
+.back-btn:active {
+  opacity: 0.7;
+  transform: scale(0.9);
+}
+
+.header-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  flex: 1;
+  text-align: center;
+  margin-right: 60rpx;
+  letter-spacing: 1.5rpx;
+  text-shadow: 0 1rpx 2rpx rgba(0, 0, 0, 0.2);
+}
+
+/* 视图切换 */
+.view-switch {
+  display: flex;
+  background-color: white;
+  border-bottom: 1rpx solid #f0f0f0;
+  padding: 20rpx 30rpx;
+  gap: 20rpx;
+  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.05);
+}
+
+.view-option {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20rpx 0;
+  border-radius: 12rpx;
+  background-color: #f8f9fa;
+  border: 2rpx solid #f0f0f0;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.view-option.active {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  border-color: #2980b9;
+  box-shadow: 0 4rpx 8rpx rgba(52, 152, 219, 0.2);
+  transform: translateY(-2rpx);
+}
+
+.view-option:active {
+  transform: scale(0.98);
+}
+
+.view-option.active .view-icon,
+.view-option.active .view-text {
+  color: white;
+}
+
+.view-icon {
+  font-size: 40rpx;
+  margin-bottom: 10rpx;
+  color: #666666;
+}
+
+.view-text {
+  font-size: 24rpx;
+  color: #666666;
+  font-weight: 500;
+}
+
+/* 统计信息 */
+.stats-section {
+  display: flex;
+  padding: 30rpx 20rpx;
+  background-color: white;
+  border-bottom: 1rpx solid #f0f0f0;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20rpx); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.stats-item {
+  flex: 1;
+  text-align: center;
+  padding: 0 10rpx;
+}
+
+.stats-value {
+  font-size: 42rpx;
+  font-weight: bold;
+  color: #3498db;
+  margin-bottom: 8rpx;
+  text-shadow: 0 2rpx 4rpx rgba(52, 152, 219, 0.2);
+}
+
+.stats-label {
+  font-size: 24rpx;
+  color: #666666;
+  font-weight: 500;
+}
+
+/* 列表视图 */
+.list-view {
+  background-color: #f5f7fa;
+  min-height: calc(100vh - 350rpx);
+}
+
+/* 筛选部分 */
+.filter-section {
+  background-color: white;
+  padding: 20rpx 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+  position: sticky;
+  top: 100rpx;
+  z-index: 99;
+  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.05);
+}
+
+.filter-title {
+  font-size: 28rpx;
+  color: #333333;
+  font-weight: 500;
+  margin-bottom: 20rpx;
+}
+
+.filter-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15rpx;
+}
+
+.filter-option {
+  padding: 12rpx 24rpx;
+  background-color: #f8f9fa;
+  border: 1rpx solid #e0e0e0;
+  border-radius: 25rpx;
+  font-size: 24rpx;
+  color: #666666;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.filter-option.active {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  border-color: #2980b9;
+  color: white;
+  box-shadow: 0 2rpx 6rpx rgba(52, 152, 219, 0.2);
+}
+
+.filter-option:active {
+  transform: scale(0.95);
+}
+
+/* 历史记录列表 */
+.history-list {
+  height: calc(100vh - 450rpx);
+  padding: 20rpx 30rpx;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx 0;
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: 30rpx;
+  opacity: 0.5;
+}
+
+.empty-text {
+  font-size: 32rpx;
+  color: #666666;
+  font-weight: 500;
+  margin-bottom: 15rpx;
+}
+
+.empty-subtext {
+  font-size: 26rpx;
+  color: #999999;
+}
+
+/* 历史记录项 */
+.history-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.history-item {
+  background-color: white;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
+  border: 2rpx solid;
+  border-color: #e0e0e0;
+  animation: slideInUp 0.5s ease-out;
+  animation-fill-mode: both;
+}
+
+.history-item:nth-child(1) { animation-delay: 0.1s; }
+.history-item:nth-child(2) { animation-delay: 0.2s; }
+.history-item:nth-child(3) { animation-delay: 0.3s; }
+.history-item:nth-child(4) { animation-delay: 0.4s; }
+.history-item:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.history-item.status-active {
+  border-color: #3498db;
+  background: linear-gradient(135deg, #e8f4ff, #ffffff);
+}
+
+.history-item.status-cancelled {
+  border-color: #e74c3c;
+  background: linear-gradient(135deg, #ffeaea, #ffffff);
+}
+
+.history-item.status-timeout {
+  border-color: #e67e22;
+  background: linear-gradient(135deg, #fff5e8, #ffffff);
+}
+
+.history-item.status-expired {
+  border-color: #95a5a6;
+  background: linear-gradient(135deg, #f5f5f5, #ffffff);
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.item-date {
+  font-size: 28rpx;
+  color: #2c3e50;
+  font-weight: bold;
+  letter-spacing: 1rpx;
+}
+
+.item-status {
+  font-size: 24rpx;
+  padding: 6rpx 16rpx;
+  border-radius: 20rpx;
+  font-weight: 500;
+  min-width: 100rpx;
+  text-align: center;
+}
+
+.item-status.status-active {
+  background-color: #3498db;
+  color: white;
+}
+
+.item-status.status-cancelled {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.item-status.status-timeout {
+  background-color: #e67e22;
+  color: white;
+}
+
+.item-status.status-expired {
+  background-color: #95a5a6;
+  color: white;
+}
+
+.item-content {
+  margin-bottom: 20rpx;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+
+.info-row:last-child {
+  margin-bottom: 0;
+}
+
+.info-label {
+  font-size: 26rpx;
+  color: #666666;
+  font-weight: 500;
+  min-width: 140rpx;
+}
+
+.info-value {
+  font-size: 26rpx;
+  color: #333333;
+  font-weight: 500;
+  flex: 1;
+}
+
+.item-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20rpx;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.item-id {
+  font-size: 22rpx;
+  color: #999999;
+  font-family: 'Courier New', monospace;
+}
+
+.duration-tag {
+  font-size: 24rpx;
+  color: #27ae60;
+  background-color: #e8f8f0;
+  padding: 6rpx 16rpx;
+  border-radius: 20rpx;
+  font-weight: 600;
+  border: 1rpx solid #27ae60;
+}
+
+/* 加载更多提示 */
+.load-more {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40rpx 0;
+  text-align: center;
+}
+
+.load-text {
+  font-size: 26rpx;
+  color: #999999;
+  margin-bottom: 10rpx;
+}
+
+.load-icon {
+  font-size: 40rpx;
+  opacity: 0.7;
+}
+
+/* 日历视图 */
+.calendar-view {
+  background-color: white;
+  min-height: calc(100vh - 350rpx);
+  padding: 20rpx 0;
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* 日历头部 */
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30rpx 20rpx 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+  margin-bottom: 20rpx;
+}
+
+.calendar-nav {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #3498db;
+  width: 60rpx;
+  height: 60rpx;
+  line-height: 50rpx;
+  text-align: center;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: all 0.2s;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-nav:active {
+  opacity: 1;
+  background-color: #f0f0f0;
+  transform: scale(0.9);
+}
+
+.calendar-title {
+  font-size: 32rpx;
+  color: #2c3e50;
+  font-weight: bold;
+  text-align: center;
+  flex: 1;
+  letter-spacing: 1rpx;
+}
+
+/* 星期标题 */
+.calendar-weekdays {
+  display: flex;
+  padding: 0 20rpx 10rpx 20rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+  margin-bottom: 10rpx;
+}
+
+.weekday {
+  flex: 1;
+  text-align: center;
+  font-size: 28rpx;
+  color: #666666;
+  font-weight: 500;
+  padding: 10rpx 0;
+}
+
+.weekday:nth-child(1) {
+  color: #e74c3c; /* 周日红色 */
+}
+
+/* 日历日期 */
+.calendar-days {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 20rpx;
+}
+
+.calendar-day {
+  width: calc(100% / 7);
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12rpx;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 10rpx 0;
+  margin-bottom: 5rpx;
+}
+
+.calendar-day:active {
+  background-color: #f8f9fa;
+  transform: scale(0.95);
+}
+
+.calendar-day.other-month {
+  color: #cccccc;
+  cursor: default;
+}
+
+.calendar-day.other-month:active {
+  background-color: transparent;
+  transform: none;
+}
+
+.calendar-day.today {
+  background-color: #3498db;
+  color: white;
+  font-weight: bold;
+}
+
+.calendar-day.today .day-number {
+  color: white;
+}
+
+.calendar-day.selected {
+  background-color: #e8f4ff;
+  border: 2rpx solid #3498db;
+  font-weight: bold;
+}
+
+.calendar-day.selected .day-number {
+  color: #3498db;
+}
+
+.calendar-day.has-events::before {
+  content: '';
+  position: absolute;
+  top: 8rpx;
+  right: 8rpx;
+  width: 8rpx;
+  height: 8rpx;
+  background-color: #e74c3c;
+  border-radius: 50%;
+}
+
+.day-number {
+  font-size: 28rpx;
+  color: #333333;
+  font-weight: 500;
+  margin-bottom: 5rpx;
+}
+
+.day-events {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rpx;
+}
+
+.event-dot {
+  width: 6rpx;
+  height: 6rpx;
+  background-color: #e74c3c;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+/* 选中日期的预约记录 */
+.selected-date-section {
+  margin: 20rpx 30rpx 0 30rpx;
+  background-color: #f8f9fa;
+  border-radius: 16rpx;
+  padding: 0;
+  overflow: hidden;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+  border: 1rpx solid #f0f0f0;
+  animation: slideInUp 0.5s ease-out;
+}
+
+.selected-date-header {
+  padding: 20rpx 30rpx;
+  background: linear-gradient(135deg, #2c3e50, #4a6491);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.selected-date-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: white;
+  letter-spacing: 1rpx;
+}
+
+.selected-date-count {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 6rpx 16rpx;
+  border-radius: 20rpx;
+}
+
+.date-reservations {
+  max-height: 300rpx;
+  padding: 20rpx 30rpx;
+}
+
+.date-reservation-items {
+  display: flex;
+  flex-direction: column;
+  gap: 15rpx;
+}
+
+.date-reservation-item {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 20rpx 25rpx;
+  border-radius: 12rpx;
+  border: 1rpx solid #f0f0f0;
+  transition: all 0.3s ease;
+  animation: fadeIn 0.3s ease-out;
+  animation-fill-mode: both;
+}
+
+.date-reservation-item:nth-child(1) { animation-delay: 0.1s; }
+.date-reservation-item:nth-child(2) { animation-delay: 0.2s; }
+.date-reservation-item:nth-child(3) { animation-delay: 0.3s; }
+
+.date-reservation-item:active {
+  background-color: #f8f9fa;
+  transform: translateX(5rpx);
+}
+
+.time-slot {
+  font-size: 24rpx;
+  color: #666666;
+  background-color: #f5f5f5;
+  padding: 8rpx 16rpx;
+  border-radius: 8rpx;
+  font-family: 'Courier New', monospace;
+  min-width: 100rpx;
+  text-align: center;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+}
+
+.reservation-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5rpx;
+}
+
+.reservation-seat {
+  font-size: 28rpx;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+.reservation-duration {
+  font-size: 24rpx;
+  color: #27ae60;
+  font-weight: 500;
+  background-color: #e8f8f0;
+  padding: 4rpx 12rpx;
+  border-radius: 8rpx;
+  display: inline-block;
+  width: fit-content;
+}
+
+.reservation-status {
+  font-size: 20rpx;
+  padding: 6rpx 12rpx;
+  border-radius: 8rpx;
+  font-weight: 500;
+  margin-left: 10rpx;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.reservation-status.status-active {
+  background-color: #3498db;
+  color: white;
+}
+
+.reservation-status.status-cancelled {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.reservation-status.status-timeout {
+  background-color: #e67e22;
+  color: white;
+}
+
+.reservation-status.status-expired {
+  background-color: #95a5a6;
+  color: white;
+}

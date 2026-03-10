@@ -1,0 +1,45 @@
+<!-- pages/seatSelect/seatSelect.wxml -->
+<view class="container">
+  <!-- 楼层切换选项 -->
+  <view class="floor-tab-bar">
+    <view 
+      class="floor-tab {{currentFloor === 1 ? 'active' : ''}}" 
+      data-floor="1" 
+      bindtap="switchFloor"
+    >
+      1楼
+    </view>
+    <view 
+      class="floor-tab {{currentFloor === 2 ? 'active' : ''}}" 
+      data-floor="2" 
+      bindtap="switchFloor"
+    >
+      2楼
+    </view>
+    <view 
+      class="floor-tab {{currentFloor === 3 ? 'active' : ''}}" 
+      data-floor="3" 
+      bindtap="switchFloor"
+    >
+      3楼
+    </view>
+  </view>
+
+  <!-- 座位滚动区域(纵向滚动，容纳200行座位) -->
+  <scroll-view class="seat-scroll" scroll-y>
+    <!-- 座位网格: 每3个座位一行, 共200行 -->
+    <view class="seat-grid">
+      <view 
+        class="seat-card"
+        style="{{item.status === 'reserved' ? 'background-color:#e74c3c;border:2rpx solid #e74c3c;color:#fff;opacity:0.95' : 'background-color:#27ae60;border:2rpx solid #27ae60;color:#fff;'}}"
+        wx:for="{{currentFloorSeats}}" 
+        wx:key="id"
+        data-seatnumber="{{item.seatNumber}}"
+        bindtap="selectSeat"
+      >
+        <text class="seat-number">{{item.displayLabel || item.seatNumber}}</text>
+        <view class="seat-status" wx:if="{{item.status === 'reserved'}}">占用中</view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

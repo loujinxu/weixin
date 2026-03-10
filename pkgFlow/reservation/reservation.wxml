@@ -1,0 +1,34 @@
+<view class="reservation-container">
+  <view class="card seat-info-card">
+    <view class="card-title">座位信息</view>
+    <view class="seat-number">座位号: {{seatLabel}}</view>
+    <view class="reservation-hours">预约时长: {{hours}}小时</view>
+  </view>
+  <view class="card countdown-card">
+    <view class="countdown-label">剩余时间</view>
+    <view class="countdown-text">{{countdownText}}</view>
+  </view>
+  <view class="card temp-info-card">
+    <view class="temp-leave-count">暂离次数: {{tempLeaveCount}}/{{maxTempLeaves}}</view>
+    <view class="temp-leave-description">每次预约最多允许暂离{{maxTempLeaves}}次</view>
+  </view>
+  <view class="action-buttons">
+    <button class="btn temp-leave-btn" bindtap="startTempLeave" disabled="{{tempLeaveCount >= maxTempLeaves}}">
+      {{tempLeaveCount >= maxTempLeaves ? '暂离次数已用完' : '开始暂离'}}
+    </button>
+    <button class="btn end-reservation-btn" bindtap="endReservation">退坐</button>
+  </view>
+  <view class="modal-overlay" wx:if="{{showTimeEndModal}}">
+    <view class="modal-container">
+      <view class="modal-header"><view class="modal-title">预约结束</view></view>
+      <view class="modal-content">
+        <view class="modal-message">座位 {{seatLabel}} 的预约时间已结束</view>
+        <view class="modal-subtitle">请选择下一步操作：</view>
+      </view>
+      <view class="modal-actions">
+        <button class="modal-button renew-button" bindtap="renewReservation">续约</button>
+        <button class="modal-button confirm-button" bindtap="handleCancel">取消</button>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,28 @@
+<!--pages/blacklist/blacklist.wxml-->
+<view class="container">
+  <view class="card">
+    <view class="card-title">添加黑名单</view>
+    <view class="form-item">
+      <text class="label">用户ID</text>
+      <input class="input" placeholder="请输入用户ID" value="{{inputUserId}}" bindinput="onUserIdInput" />
+    </view>
+    <view class="form-item">
+      <text class="label">原因（选填）</text>
+      <input class="input" placeholder="如：占座未到、违规等" value="{{inputReason}}" bindinput="onReasonInput" />
+    </view>
+    <view class="btn-primary" bindtap="addBlacklist">加入黑名单</view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">黑名单列表（共 {{list.length}} 人）</view>
+    <view class="empty" wx:if="{{list.length === 0}}">暂无黑名单记录</view>
+    <view class="black-item" wx:for="{{list}}" wx:key="userId">
+      <view class="black-info">
+        <text class="black-userid">{{item.userId}}</text>
+        <text class="black-reason">原因：{{item.reason}}</text>
+        <text class="black-time">{{item.createdAtText}}</text>
+      </view>
+      <view class="black-btn" data-userid="{{item.userId}}" bindtap="removeBlacklist">移除</view>
+    </view>
+  </view>
+</view>

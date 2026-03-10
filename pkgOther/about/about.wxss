@@ -1,0 +1,199 @@
+/* pages/about/about.wxss */
+.container {
+  min-height: 100vh;
+  background-color: #f5f7fa;
+  font-family: -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', sans-serif;
+}
+
+/* 顶部导航 */
+.header {
+  display: flex;
+  align-items: center;
+  height: 100rpx;
+  padding: 0 30rpx;
+  background: linear-gradient(135deg, #2c3e50, #4a6491);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.back-btn {
+  font-size: 50rpx;
+  font-weight: bold;
+  width: 60rpx;
+  height: 60rpx;
+  line-height: 50rpx;
+  text-align: center;
+  margin-right: 20rpx;
+  cursor: pointer;
+  opacity: 0.9;
+  transition: all 0.2s;
+}
+
+.back-btn:active {
+  opacity: 0.7;
+  transform: scale(0.9);
+}
+
+.header-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  flex: 1;
+  text-align: center;
+  margin-right: 60rpx;
+  letter-spacing: 1.5rpx;
+  text-shadow: 0 1rpx 2rpx rgba(0, 0, 0, 0.2);
+}
+
+/* 内容滚动区域 */
+.content-scroll {
+  height: calc(100vh - 100rpx);
+}
+
+.content-section {
+  padding: 40rpx 30rpx 60rpx 30rpx;
+  background-color: #ffffff;
+  min-height: 100%;
+}
+
+/* 规则列表样式 */
+.rule-item {
+  margin-bottom: 40rpx;
+  display: flex;
+  animation: fadeInUp 0.5s ease-out;
+  animation-fill-mode: both;
+}
+
+.rule-item:nth-child(1) { animation-delay: 0.1s; }
+.rule-item:nth-child(2) { animation-delay: 0.2s; }
+.rule-item:nth-child(3) { animation-delay: 0.3s; }
+.rule-item:nth-child(4) { animation-delay: 0.4s; }
+.rule-item:nth-child(5) { animation-delay: 0.5s; }
+.rule-item:nth-child(6) { animation-delay: 0.6s; }
+.rule-item:nth-child(7) { animation-delay: 0.7s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rule-number {
+  width: 60rpx;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #3498db;
+  line-height: 1.6;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.rule-content {
+  flex: 1;
+  padding-left: 20rpx;
+}
+
+.rule-text {
+  font-size: 28rpx;
+  line-height: 1.8;
+  color: #333333;
+  text-align: justify;
+}
+
+/* 联系方式 */
+.contact-info {
+  margin-top: 20rpx;
+  background-color: #f8f9fa;
+  padding: 20rpx 30rpx;
+  border-radius: 12rpx;
+  border: 1rpx solid #e0e0e0;
+  animation: pulse 2s infinite;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contact-info:active {
+  background-color: #f0f7ff;
+  transform: scale(0.99);
+  box-shadow: 0 2rpx 8rpx rgba(52, 152, 219, 0.2);
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.4); }
+  70% { box-shadow: 0 0 0 20rpx rgba(52, 152, 219, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0); }
+}
+
+.phone-number {
+  font-size: 32rpx;
+  color: #e74c3c;
+  font-weight: bold;
+  display: block;
+  text-align: center;
+  margin-bottom: 10rpx;
+  letter-spacing: 2rpx;
+}
+
+.contact-hint {
+  font-size: 24rpx;
+  color: #666666;
+  text-align: center;
+  font-style: italic;
+}
+
+/* 温馨提示 */
+.tip-box {
+  background: linear-gradient(135deg, #e8f4ff, #d4e6ff);
+  border: 2rpx solid #3498db;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-top: 50rpx;
+  display: flex;
+  align-items: flex-start;
+  gap: 20rpx;
+  animation: fadeIn 0.5s ease-out 1s both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.tip-icon {
+  font-size: 50rpx;
+  width: 80rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.tip-content {
+  flex: 1;
+}
+
+.tip-title {
+  font-size: 30rpx;
+  color: #2c3e50;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.tip-text {
+  font-size: 26rpx;
+  color: #2c3e50;
+  line-height: 1.6;
+  text-align: justify;
+}
