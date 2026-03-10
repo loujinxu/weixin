@@ -29,6 +29,7 @@ jobs:
         run: |
           node -e "const b64=process.env.MP_PRIVATE_KEY_B64||''; require('fs').writeFileSync(process.env.GITHUB_WORKSPACE+'/private.key', Buffer.from(b64,'base64').toString('utf8'), 'utf8');"
           chmod 600 private.key
+          head -1 private.key  # 仅打印首行，确认 PEM 格式（应为 -----BEGIN RSA PRIVATE KEY-----）
 
       - name: Upload to WeChat (experience version)
         env:

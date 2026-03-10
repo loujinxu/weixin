@@ -46,6 +46,51 @@ library-seat-miniprogram/
 - 首次启动会初始化 A/B/C 三楼，每楼 20 个座位（A01–A20, B01–B20, C01–C20）。
 - 用户以本地生成的 `userId` 区分，未做真实登录；黑名单、历史记录均按该 ID 判断。
 
+## 发布体验版（推送 + 本地上传）
+
+代码推送到 GitHub 后，在**本机**用 miniprogram-ci 上传体验版（因 GitHub Actions 所在网络访问微信接口不稳定，推荐此方式）。
+
+### 每次发布流程
+
+1. **确认私钥文件存在**
+   - 项目根目录下要有 `private.key`（微信公众平台 → 开发管理 → 开发设置 → 小程序代码上传密钥，下载的 PEM 内容保存为该文件）。
+   - 若没有，把下载的密钥整段复制到 `private.key`，与 `app.js` 同级。
+
+2. **提交并推送到 GitHub**
+   ```powershell
+   cd C:\Users\86156\Desktop\cursor\library-seat-miniprogram
+   git add .
+   git status
+   git commit -m "你的提交说明"
+   git push origin main
+   ```
+   - 若 `git push` 连不上 GitHub，可开 VPN 或连手机热点后再执行一次。
+
+3. **本地上传体验版**
+   ```powershell
+   cd C:\Users\86156\Desktop\cursor\library-seat-miniprogram
+   npm install
+   npm run upload:ci
+   ```
+   - 看到 `upload result: { subPackageInfo: [...] }` 且无报错即表示上传成功。
+   - 上传后到微信公众平台「版本管理」中可看到新版本，可设为体验版。
+
+### 简要检查清单
+
+| 步骤 | 命令/检查 |
+|------|-----------|
+| 私钥 | 根目录存在 `private.key`，约 1.7KB |
+| 推送 | `git push origin main` 成功 |
+| 依赖 | 已执行过 `npm install` |
+| 上传 | `npm run upload:ci` 成功 |
+
+### 注意
+
+- `private.key` 不要提交到 Git（已在 `.gitignore` 中忽略）。
+- 若本机 PowerShell 报「无法加载脚本」，先执行：`Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`。
+
+---
+
 ## 注意事项
 
 - 暂离超时或预约结束时间到达后，再次进入相关页面时会自动释放座位（在 `releaseExpiredReservations` 中处理）。
